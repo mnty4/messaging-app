@@ -17,21 +17,23 @@ const Chat = ({ socket, username, room }) => {
       message,
       time: (() => {
         const hours = new Date().getHours();
-        const minutes = new Date().getMinutes();
+        let minutes = new Date().getMinutes();
+        if (minutes < 10) minutes = "0" + minutes;
         return hours > 12
           ? `${hours - 12}:${minutes}pm`
           : `${hours}:${minutes}am`;
       })(),
     };
-    setMessageList([...messageList, messageData]);
     await socket.emit("send_message", messageData);
+    messageData.username = "me";
+    console.log(messageList);
+    setMessageList((messages) => [...messages, messageData]);
   };
 
   useEffect(() => {
     socket.on("receive_message", (messageData) => {
-      // console.log(messageList);
-      // console.log([...messageList, messageData]);
-      setMessageList([...messageList, messageData]);
+      console.log(messageList);
+      setMessageList((messages) => [...messages, messageData]);
     });
   }, [socket]);
 
