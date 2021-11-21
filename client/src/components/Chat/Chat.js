@@ -8,9 +8,9 @@ const Chat = ({ socket, username, room }) => {
   const [messageList, setMessageList] = useState([]);
 
   const submitHandler = async (e) => {
-    e.preventDefault();
-
+    e && e.preventDefault();
     if (message.length < 1) return;
+
     const messageData = {
       username,
       room,
@@ -19,6 +19,7 @@ const Chat = ({ socket, username, room }) => {
         const hours = new Date().getHours();
         let minutes = new Date().getMinutes();
         if (minutes < 10) minutes = "0" + minutes;
+        if (hours === "0") return `12:${minutes}am`;
         return hours > 12
           ? `${hours - 12}:${minutes}pm`
           : `${hours}:${minutes}am`;
@@ -40,7 +41,7 @@ const Chat = ({ socket, username, room }) => {
   return (
     <div className={styles.Chat}>
       <div>
-        <h2 className={styles.chatHeader}>Live Chat</h2>
+        <h2 className={styles.chatHeader}>{room} - Live Chat</h2>
       </div>
 
       <div className="chat-footer">
@@ -48,12 +49,12 @@ const Chat = ({ socket, username, room }) => {
           type="text"
           placeholder="Hey..."
           onChange={(e) => setMessage(e.target.value)}
+          onKeyPress={(e) => e.key === "Enter" && submitHandler()}
         />
         <button onClick={submitHandler}>Send</button>
       </div>
       <div className="chat-body">
         {messageList.map((msg, i) => {
-          // return <p key={i}>{msg.message}</p>;
           return <Message key={i} userData={msg} />;
         })}
       </div>
