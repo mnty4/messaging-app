@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.static("public"));
 
 const server = http.createServer(app);
-
+console.log(process.env.origin);
 const io = new Server(server, {
   cors: {
     origin: process.env.origin,
