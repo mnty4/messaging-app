@@ -26,7 +26,7 @@ const Chat = ({ socket, username, room }) => {
       })(),
     };
     await socket.emit("send_message", messageData);
-    messageData.username = "me";
+
     console.log(messageList);
     setMessageList((messages) => [...messages, messageData]);
   };
@@ -53,9 +53,31 @@ const Chat = ({ socket, username, room }) => {
         />
         <button onClick={submitHandler}>Send</button>
       </div>
-      <div className="chat-body">
-        {messageList.map((msg, i) => {
-          return <Message key={i} userData={msg} />;
+      <div className={styles.chatBody}>
+        {messageList.map((userData, i) => {
+          return (
+            // <div
+            //   style={
+            //     i % 2
+            //       ? {
+            //           alignSelf: "flex-end",
+            //           width: "80%",
+            //           backgroundColor: "blue",
+            //         }
+            //       : {
+            //           alignSelf: "flex-start",
+            //           width: "80%",
+            //           backgroundColor: "red",
+            //         }
+            //   }
+            // >
+            <Message
+              key={i}
+              userData={userData}
+              isSelf={username === userData.username}
+            />
+            // </div>
+          );
         })}
       </div>
     </div>

@@ -1,6 +1,13 @@
 .Chat {
+  background-color: #ddd;
+  grid-area: chat;
 }
 
 .chatHeader {
   font-size: 24px;
+}
+
+.chatBody {
+  display: flex;
+  flex-direction: column;
 }

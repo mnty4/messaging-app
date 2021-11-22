@@ -30,6 +30,10 @@ io.on("connection", (socket) => {
     console.log(messageData);
     socket.to(messageData.room).emit("receive_message", messageData);
   });
+  socket.on("leave_room", (room) => {
+    console.log(`User with ID: ${socket.id} has left ${room}`);
+    socket.leave(room);
+  });
 
   socket.on("disconnect", () => {
     console.log(`User ${socket.id} disconnected.`);
