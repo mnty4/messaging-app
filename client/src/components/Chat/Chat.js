@@ -19,7 +19,7 @@ const Chat = ({ socket, username, room }) => {
         const hours = new Date().getHours();
         let minutes = new Date().getMinutes();
         if (minutes < 10) minutes = "0" + minutes;
-        if (hours === "0") return `12:${minutes}am`;
+        if (hours === 0) return `12:${minutes}am`;
         return hours > 12
           ? `${hours - 12}:${minutes}pm`
           : `${hours}:${minutes}am`;

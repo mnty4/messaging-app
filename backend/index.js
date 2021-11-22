@@ -17,6 +17,8 @@ const io = new Server(server, {
   },
 });
 
+// TODO: view rooms in use, number of participants, number of participants reduces on disconnect
+
 io.on("connection", (socket) => {
   console.log(`User ${socket.id} connected.`);
 

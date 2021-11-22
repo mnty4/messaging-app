@@ -2,9 +2,10 @@ import "./App.css";
 import io from "socket.io-client";
 import { useState } from "react";
 import Chat from "./components/Chat/Chat";
-
-const socket = io.connect("http://localhost:3001");
-
+console.log(process.env.REACT_APP_API_ENDPOINT);
+const socket = io.connect(process.env.REACT_APP_API_ENDPOINT);
+// TODO: add scroll wheel for message display
+//
 function App() {
   const [username, setUsername] = useState("");
   const [room, setRoom] = useState("");

@@ -1,3 +1,4 @@
 .Message {
   background-color: #ccc;
+  overflow: hidden;
 }
