@@ -1,0 +1,10 @@
+.Rooms {
+  grid-area: rooms;
+}
+.title {
+}
+.roomList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import styles from "./Chat.module.css";
 import Message from "../Message/Message";
+import { Container, Form, InputGroup, Button } from "react-bootstrap";
 
 const Chat = ({ socket, username, room }) => {
   const [message, setMessage] = useState("");
@@ -12,6 +13,7 @@ const Chat = ({ socket, username, room }) => {
     if (message.length < 1) return;
 
     const messageData = {
+      id: socket.id,
       username,
       room,
       message,
@@ -27,60 +29,71 @@ const Chat = ({ socket, username, room }) => {
     };
     await socket.emit("send_message", messageData);
 
-    console.log(messageList);
     setMessageList((messages) => [...messages, messageData]);
+    setMessage("");
   };
 
   useEffect(() => {
     socket.on("receive_message", (messageData) => {
-      console.log(messageList);
       setMessageList((messages) => [...messages, messageData]);
     });
   }, [socket]);
 
   return (
-    <div className={styles.Chat}>
-      <div>
-        <h2 className={styles.chatHeader}>{room} - Live Chat</h2>
-      </div>
-
-      <div className="chat-footer">
-        <input
+    <Container className={styles.Chat}>
+      <h2>{room} - Live Chat</h2>
+      <InputGroup>
+        <Form.Control
           type="text"
-          placeholder="Hey..."
+          placeholder="Ur mum..."
           onChange={(e) => setMessage(e.target.value)}
+          value={message}
           onKeyPress={(e) => e.key === "Enter" && submitHandler()}
-        />
-        <button onClick={submitHandler}>Send</button>
-      </div>
-      <div className={styles.chatBody}>
+        ></Form.Control>
+        <Button variant="primary" onClick={submitHandler}>
+          Send
+        </Button>
+      </InputGroup>
+      <div className={styles.messages}>
         {messageList.map((userData, i) => {
           return (
-            // <div
-            //   style={
-            //     i % 2
-            //       ? {
-            //           alignSelf: "flex-end",
-            //           width: "80%",
-            //           backgroundColor: "blue",
-            //         }
-            //       : {
-            //           alignSelf: "flex-start",
-            //           width: "80%",
-            //           backgroundColor: "red",
-            //         }
-            //   }
-            // >
             <Message
               key={i}
               userData={userData}
-              isSelf={username === userData.username}
+              isSelf={socket.id === userData.id}
             />
-            // </div>
           );
         })}
       </div>
-    </div>
+    </Container>
+
+    // <div className={styles.Chat}>
+    //   <div>
+    //     <h2 className={styles.chatHeader}>{room} - Live Chat</h2>
+    //   </div>
+
+    //   <div className="chat-footer">
+    //     <input
+    //       type="text"
+    //       placeholder="Hey..."
+    // onChange={(e) => setMessage(e.target.value)}
+    // value={message}
+    // onKeyPress={(e) => e.key === "Enter" && submitHandler()}
+    //     />
+    // <button onClick={submitHandler}>Send</button>
+    //   </div>
+    //   <div className={styles.chatBody}>
+    // {messageList.map((userData, i) => {
+    //   return (
+    //     <Message
+    //       key={i}
+    //       userData={userData}
+    //       isSelf={socket.id === userData.id}
+    //         />
+    //       );
+    //     })}
+    //   </div>
+    // </div>
   );
 };
 

@@ -1,18 +1,28 @@
-.App {
+/* .App {
   text-align: center;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 15em auto;
   grid-template-areas:
     "join chat chat"
-    ". chat chat"
-    ". chat chat";
+    "rooms chat chat"
+    "rooms chat chat";
   height: 100vh;
   color: #000;
+} */
+.App {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 15em auto;
+  grid-template-areas:
+    "join chat"
+    "rooms chat";
+  height: 100vh;
+  text-align: center;
 }
-
 .form {
   width: 100%;
+
   display: flex;
   align-items: flex-start;
   justify-content: center;

@@ -1,11 +1,43 @@
-.Join {
+/* .Join {
   background-color: #eee;
+  grid-area: join;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto;
+  justify-items: center;
+  grid-template-areas:
+    "title title"
+    "username usernameField"
+    "room roomField"
+    "submit submit";
+  gap: 1em;
+  padding: 1em 2em;
+} */
+.Join {
   grid-area: join;
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.title {
+  grid-area: title;
+}
+.username {
+  grid-area: username;
+  justify-self: flex-end;
+}
+.usernameField {
+  grid-area: usernameField;
+  justify-self: flex-start;
+}
+.room {
+  grid-area: room;
+  justify-self: flex-end;
+}
+.roomField {
+  grid-area: roomField;
+  justify-self: flex-start;
+}
+
+.submit {
+  grid-area: submit;
+  width: 20%;
 }

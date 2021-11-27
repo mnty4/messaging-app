@@ -25,7 +25,14 @@ const addToRoom = (room) => {
 };
 const removeFromRoom = (room) => {
   const roomInfo = rooms.find((r) => r[0] === room);
-  if (roomInfo) --roomInfo[1];
+  if (roomInfo) {
+    --roomInfo[1];
+    if (roomInfo[1] === 0)
+      rooms.splice(
+        rooms.findIndex((r) => r === roomInfo),
+        1
+      );
+  }
   console.log(rooms);
 };
 
@@ -46,6 +53,7 @@ io.on("connection", (socket) => {
     socket.join(room);
     console.log(`User with ID: ${socket.id} has joined ${room}`);
     addToRoom(room);
+    console.log(socket.rooms);
   });
   socket.on("send_message", (messageData) => {
     console.log(messageData);
@@ -65,6 +73,8 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", () => {
     console.log(`User ${socket.id} disconnected.`);
+    console.log(socket.rooms);
+    // removeFromRoom(room);
   });
 });
 

@@ -1,5 +1,4 @@
 .Chat {
-  background-color: #ddd;
   grid-area: chat;
 }
 
@@ -8,6 +7,17 @@
 }
 
 .chatBody {
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+}
+
+.scrollToBottom {
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+}
+.messages {
   display: flex;
   flex-direction: column;
 }

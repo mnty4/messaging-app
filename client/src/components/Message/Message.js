@@ -1,18 +1,28 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./Message.module.css";
+import { Card } from "react-bootstrap";
 
 const Message = ({ userData, isSelf }) => {
   return (
-    <div
-      className={styles.Message}
-      style={isSelf ? { alignSelf: "flex-start" } : { alignSelf: "flex-end" }}
+    <Card
+      className="mt-2 px-2"
+      style={
+        isSelf
+          ? { alignSelf: "flex-end", width: "60%" }
+          : { alignSelf: "flex-start", width: "60%" }
+      }
     >
-      <p className={styles.MessageMeta}>
+      <Card.Text
+        className={styles.MessageMeta}
+        // style={{ alignItems: "flex-end" }}
+        style={{ textAlign: "end" }}
+      >
         {isSelf ? "me" : userData.username} - {userData.time}
-      </p>
-      <p className={styles.MessageText}>{userData.message}</p>
-    </div>
+      </Card.Text>
+
+      <Card.Title style={{ textAlign: "start" }}>{userData.message}</Card.Title>
+    </Card>
   );
 };
 
