@@ -1,6 +1,6 @@
 # messaging-app
 
-To run the project:
+To run this project:
 
 * clone the repository
 * cd to the backend directory
