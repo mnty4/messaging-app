@@ -54,7 +54,7 @@ const Chat = ({ socket, username, room }) => {
           Send
         </Button>
       </InputGroup>
-      <div className={styles.messages}>
+      <div className={styles.messages + " mt-2"}>
         {messageList.map((userData, i) => {
           return (
             <Message
@@ -66,34 +66,6 @@ const Chat = ({ socket, username, room }) => {
         })}
       </div>
     </Container>
-
-    // <div className={styles.Chat}>
-    //   <div>
-    //     <h2 className={styles.chatHeader}>{room} - Live Chat</h2>
-    //   </div>
-
-    //   <div className="chat-footer">
-    //     <input
-    //       type="text"
-    //       placeholder="Hey..."
-    // onChange={(e) => setMessage(e.target.value)}
-    // value={message}
-    // onKeyPress={(e) => e.key === "Enter" && submitHandler()}
-    //     />
-    // <button onClick={submitHandler}>Send</button>
-    //   </div>
-    //   <div className={styles.chatBody}>
-    // {messageList.map((userData, i) => {
-    //   return (
-    //     <Message
-    //       key={i}
-    //       userData={userData}
-    //       isSelf={socket.id === userData.id}
-    //         />
-    //       );
-    //     })}
-    //   </div>
-    // </div>
   );
 };
 

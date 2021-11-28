@@ -1,15 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import styles from "./Room.module.css";
-import { ListGroupItem } from "react-bootstrap";
-const Room = ({ room, count }) => (
-  <ListGroupItem className="pb-3 pt-3">
-    <div className={styles.Room}>
-      <b>{room}</b>
-      <div>{count}/300</div>
-    </div>
-  </ListGroupItem>
-);
+import { ListGroupItem, Button } from "react-bootstrap";
+const Room = ({ room, count, join, joinedRoom }) => {
+  const [disabled, setDisabled] = useState(false);
+
+  useEffect(() => {
+    setDisabled(joinedRoom === room);
+  }, [joinedRoom, room]);
+
+  return (
+    <ListGroupItem className="pb-3 pt-3">
+      <div className={styles.Room}>
+        <b>{room}</b>
+        <div style={{ display: "flex", alignItems: "center", gap: "1em" }}>
+          <div>{count}/300</div>
+          <Button
+            disabled={disabled}
+            onClick={() => {
+              join(room);
+            }}
+          >
+            Join
+          </Button>
+        </div>
+      </div>
+    </ListGroupItem>
+  );
+};
 
 Room.propTypes = {};
 

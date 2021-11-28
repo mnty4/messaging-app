@@ -6,18 +6,14 @@ import { Card } from "react-bootstrap";
 const Message = ({ userData, isSelf }) => {
   return (
     <Card
-      className="mt-2 px-2"
+      className="mb-2 px-2"
       style={
         isSelf
           ? { alignSelf: "flex-end", width: "60%" }
           : { alignSelf: "flex-start", width: "60%" }
       }
     >
-      <Card.Text
-        className={styles.MessageMeta}
-        // style={{ alignItems: "flex-end" }}
-        style={{ textAlign: "end" }}
-      >
+      <Card.Text className={styles.MessageMeta} style={{ textAlign: "end" }}>
         {isSelf ? "me" : userData.username} - {userData.time}
       </Card.Text>
 

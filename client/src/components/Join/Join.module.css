@@ -1,18 +1,3 @@
-/* .Join {
-  background-color: #eee;
-  grid-area: join;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: auto;
-  justify-items: center;
-  grid-template-areas:
-    "title title"
-    "username usernameField"
-    "room roomField"
-    "submit submit";
-  gap: 1em;
-  padding: 1em 2em;
-} */
 .Join {
   grid-area: join;
 }

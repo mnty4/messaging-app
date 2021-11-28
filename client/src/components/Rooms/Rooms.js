@@ -4,14 +4,22 @@ import styles from "./Rooms.module.css";
 import Room from "../Room/Room";
 import { Button, Container, ListGroup } from "react-bootstrap";
 
-const Rooms = ({ rooms, refreshHandler }) => {
+const Rooms = ({ rooms, refreshHandler, join, joinedRoom }) => {
   return (
     <Container className={styles.Rooms}>
       <h2>Chat Rooms</h2>
-      <Button variant="outline-secondary">Temp Refresh</Button>
+      <Button variant="outline-secondary" onClick={refreshHandler}>
+        Temp Refresh
+      </Button>
       <ListGroup className="mt-3">
         {rooms.map(([room, count], i) => (
-          <Room room={room} count={count} key={i} />
+          <Room
+            room={room}
+            count={count}
+            key={i}
+            join={join}
+            joinedRoom={joinedRoom}
+          />
         ))}
       </ListGroup>
     </Container>
