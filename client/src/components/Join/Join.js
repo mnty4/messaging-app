@@ -6,7 +6,7 @@ const Join = ({ joinHandler, setRoom, setUsername, room, username }) => {
   return (
     <Container className={styles.Join + " mb-4"}>
       <Form onSubmit={joinHandler} className={styles.Join}>
-        <h2 className={styles.title}>Join a chat</h2>
+        <h2 className={styles.title}>Join a Chat</h2>
         <Row>
           <Col lg>
             <Form.Group>

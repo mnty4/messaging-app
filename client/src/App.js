@@ -12,6 +12,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 // avatars, choose or random options
 
+// update the refresh logo
+
+// scroll wheel
+
+// organise my commits
+
+// number of users online
+
+// database
+
 console.log(process.env.REACT_APP_API_ENDPOINT);
 const socket = io.connect(process.env.REACT_APP_API_ENDPOINT);
 function App() {

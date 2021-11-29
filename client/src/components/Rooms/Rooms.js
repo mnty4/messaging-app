@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./Rooms.module.css";
 import Room from "../Room/Room";
+import RefreshIcon from "@material-ui/icons/Refresh";
 import { Button, Container, ListGroup } from "react-bootstrap";
 
 const Rooms = ({ rooms, refreshHandler, join, joinedRoom }) => {
@@ -11,6 +12,7 @@ const Rooms = ({ rooms, refreshHandler, join, joinedRoom }) => {
       <Button variant="outline-secondary" onClick={refreshHandler}>
         Temp Refresh
       </Button>
+      {/* <img  alt="" /> */}
       <ListGroup className="mt-3">
         {rooms.map(([room, count], i) => (
           <Room
