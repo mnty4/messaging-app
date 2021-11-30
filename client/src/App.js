@@ -12,13 +12,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 // avatars, choose or random options
 
-// update the refresh logo
-
 // scroll wheel
 
 // organise my commits
-
-// number of users online
 
 // database
 
@@ -29,6 +25,10 @@ function App() {
   const [room, setRoom] = useState("");
   const [joinedRoom, setJoinedRoom] = useState("");
   const [rooms, setRooms] = useState([]);
+  const [onlineTotal, setOnlineTotal] = useState(0);
+  const [wheelIsGrey, setWheelIsGrey] = useState(false);
+
+
   const validateUsername = () => {
     return username.length > 0;
   };
@@ -53,12 +53,15 @@ function App() {
   };
 
   const refreshHandler = async () => {
-    await socket.emit("refresh_rooms");
+    setWheelIsGrey(true);
+    await socket.emit("refresh_room_info");
   };
 
   useEffect(() => {
-    socket.on("receive_refreshed_rooms", (roomArr) => {
-      setRooms(roomArr);
+    socket.on("receive_refreshed_room_info", ({rooms, total}) => {
+      setRooms(rooms);
+      setOnlineTotal(total);
+      setWheelIsGrey(false);
     });
   }, []);
 
@@ -78,9 +81,11 @@ function App() {
       />
       <Rooms
         refreshHandler={refreshHandler}
+        wheelIsGrey={wheelIsGrey}
         rooms={rooms}
         join={join}
         joinedRoom={joinedRoom}
+        onlineTotal={onlineTotal}
       />
       {joinedRoom !== "" && (
         <Chat socket={socket} username={username} room={joinedRoom} />

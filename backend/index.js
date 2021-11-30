@@ -20,6 +20,7 @@ const io = new Server(server, {
   },
 });
 const rooms = [];
+let total = 0;
 
 const addToRoom = (room) => {
   const roomInfo = rooms.find((r) => r[0] === room);
@@ -41,7 +42,7 @@ const removeFromRoom = (room) => {
 
 io.on("connection", (socket) => {
   console.log(`User ${socket.id} connected.`);
-
+  ++total;
   socket.on("join_room", (room) => {
     socket.join(room);
     console.log(`User with ID: ${socket.id} has joined ${room}`);
@@ -57,8 +58,13 @@ io.on("connection", (socket) => {
     removeFromRoom(room);
     socket.leave(room);
   });
-  socket.on("refresh_rooms", () => {
-    io.to(socket.id).emit("receive_refreshed_rooms", rooms);
+  socket.on("refresh_room_info", () => {
+    const updatedData = {
+      rooms,
+      total
+    };
+    console.log(updatedData);
+    io.to(socket.id).emit("receive_refreshed_room_info", updatedData);
   });
   socket.on("disconnecting", () => {
     console.log(socket.rooms);
@@ -67,6 +73,7 @@ io.on("connection", (socket) => {
   });
   socket.on("disconnect", () => {
     console.log(`User ${socket.id} disconnected.`);
+    --total;
   });
 });
 
