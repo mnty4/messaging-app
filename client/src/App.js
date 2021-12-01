@@ -28,7 +28,6 @@ function App() {
   const [onlineTotal, setOnlineTotal] = useState(0);
   const [wheelIsGrey, setWheelIsGrey] = useState(false);
 
-
   const validateUsername = () => {
     return username.length > 0;
   };

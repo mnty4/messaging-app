@@ -66,6 +66,12 @@ io.on("connection", (socket) => {
     console.log(updatedData);
     io.to(socket.id).emit("receive_refreshed_room_info", updatedData);
   });
+  socket.on("typing", (userInfo) => {
+    socket.to(userInfo.room).emit('receive_typing', userInfo);
+  });
+  socket.on('cancel_typing', (userInfo) => {
+    socket.to(userInfo.room).emit('receive_cancel_typing', userInfo);
+  })
   socket.on("disconnecting", () => {
     console.log(socket.rooms);
 
