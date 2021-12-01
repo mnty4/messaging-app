@@ -75,7 +75,10 @@ const Chat = ({ socket, username, room }) => {
   return (
     <Container className={styles.Chat}>
       <h2>{room} - Live Chat</h2>
-      {usersTyping.length > 0 && <UsersTyping usersTyping={usersTyping} />}
+      <div style={{height: '24px'}}>
+      {usersTyping.length > 0 && <UsersTyping usersTyping={usersTyping} /> }
+      </div>
+      
       <InputGroup>
         <Form.Control
           type="text"
