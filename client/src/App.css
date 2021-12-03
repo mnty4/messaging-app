@@ -9,6 +9,7 @@
     ". chat";
   height: 100vh;
   text-align: center;
+  
 }
 
 .logo {
@@ -38,6 +39,7 @@
 
 body {
   margin: 0;
+  
 }
 
 .title {

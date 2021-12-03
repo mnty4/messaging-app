@@ -6,17 +6,17 @@ import Join from "./components/Join/Join";
 import Rooms from "./components/Rooms/Rooms";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-// username is typing...
-// username and username2 is typing...
-// username and 2 others is typing...
+// TODO: avatars, choose or random options
 
-// avatars, choose or random options
+// TODO: scroll wheel
 
-// scroll wheel
+// TODO: refactor
 
-// organise my commits
+// TODO: invalid input
 
-// database
+// TODO: organise my commits
+
+// TODO: database
 
 console.log(process.env.REACT_APP_API_ENDPOINT);
 const socket = io.connect(process.env.REACT_APP_API_ENDPOINT);
@@ -25,7 +25,7 @@ function App() {
   const [room, setRoom] = useState("");
   const [joinedRoom, setJoinedRoom] = useState("");
   const [rooms, setRooms] = useState([]);
-  const [onlineTotal, setOnlineTotal] = useState(0);
+  const [onlineTotal, setOnlineTotal] = useState(1);
   const [wheelIsGrey, setWheelIsGrey] = useState(false);
 
   const validateUsername = () => {

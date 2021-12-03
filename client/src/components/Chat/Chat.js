@@ -4,6 +4,7 @@ import styles from "./Chat.module.css";
 import Message from "../Message/Message";
 import { Container, Form, InputGroup, Button } from "react-bootstrap";
 import UsersTyping from "../UsersTyping/UsersTyping";
+import ScrollToBottom from 'react-scroll-to-bottom';
 
 const Chat = ({ socket, username, room }) => {
   const [messageList, setMessageList] = useState([]);
@@ -91,7 +92,8 @@ const Chat = ({ socket, username, room }) => {
           Send
         </Button>
       </InputGroup>
-      
+      <ScrollToBottom>
+
       
       <div className={styles.messages + " mt-2"}>
         {messageList.map((userData, i) => {
@@ -104,6 +106,7 @@ const Chat = ({ socket, username, room }) => {
           );
         })}
       </div>
+      </ScrollToBottom>
     </Container>
   );
 };
