@@ -83,7 +83,7 @@ const Chat = ({ socket, username, room }) => {
       <InputGroup>
         <Form.Control
           type="text"
-          placeholder="Ur mum..."
+          placeholder="Hey..."
           onChange={typingHandler}
           value={message}
           onKeyPress={(e) => e.key === "Enter" && submitHandler()}
