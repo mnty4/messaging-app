@@ -74,7 +74,7 @@ io.on("connection", (socket) => {
   })
   socket.on("disconnecting", () => {
     console.log(socket.rooms);
-
+    for (let room of socket.rooms) socket.to(room).emit('receive_cancel_typing', { id: socket.id })
     for (let room of socket.rooms) removeFromRoom(room);
   });
   socket.on("disconnect", () => {

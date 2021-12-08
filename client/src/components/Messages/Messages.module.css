@@ -1,0 +1,12 @@
+.Messages {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 140px);
+    
+}
+
+@media only screen and (max-width: 600px) {
+    .Messages {
+        height: 400px;
+    }
+}

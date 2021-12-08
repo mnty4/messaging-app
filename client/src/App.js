@@ -6,14 +6,12 @@ import Join from "./components/Join/Join";
 import Rooms from "./components/Rooms/Rooms";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-// TODO: avatars, choose or random options
+// TODO: implement JOI and good invalid input messages
 
-// TODO: scroll wheel
+// TODO: fix main scroll wheel scrolling when new message pops up
 
-// TODO: refactor
-
-// TODO: invalid input
-
+// TODO: fix simplebar-placeholder div style constantly changing
+  
 // TODO: organise my commits
 
 // TODO: database

@@ -9,8 +9,8 @@ const Message = ({ userData, isSelf }) => {
       className={"mb-2 px-2 py-1 " + (isSelf && "bg-primary")}
       style={
         isSelf
-          ? { alignSelf: "flex-end", width: "60%", color: "#FFF"}
-          : { alignSelf: "flex-start", width: "60%" }
+          ? { float: 'right', width: "60%", color: "#FFF"}
+          : { float: "left", width: "60%" }
       }
     >
       <Card.Text className={styles.MessageMeta + ' mb-2'} style={{ textAlign: "start" }}>
