@@ -10,15 +10,13 @@ const Messages = ({ messageList, socket }) => {
 
   const messagesEndRef = useRef(null);
 
-  // TODO: simplebar-placeholder div style constantly changing
-  
+
 
   const scrollToBottom = () => {
     messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
   }
 
   useEffect(() => {
-    console.log('rerender');
     scrollToBottom();
   })
 
